@@ -20,7 +20,7 @@ require_once('phpmailer/class.smtp.php');
 
 class Correo{
 	public $email;
-	public $firma; //aquí meteré el html para la firma del mensaje 
+	public $firma; //aquÃ­ meterÃ© el html para la firma del mensaje 
 		
 	
 	/**
@@ -36,7 +36,7 @@ class Correo{
 		$this->email->Port = 465;
 		
 		$this->email->Username = "cobshop.compraonline@gmail.com";
-		$this->email->Password = "00_CobShop_00";
+		$this->email->Password = "password";
 		
 		$this->email->setFrom("cobshop.compraonline@gmail.com");
 		$this->email->addReplyTo("cobshop.compraonline@gmail.com");
@@ -48,7 +48,7 @@ class Correo{
 	
 	/**
 	 * enviarMailRegistro()
-	 * envía un correo al registrar un usuario
+	 * envÃ­a un correo al registrar un usuario
 	 * @param string $nombre
 	 * @param string $email
 	 */
@@ -57,7 +57,7 @@ class Correo{
 		//$address = "coblion@gmail.com"; // <- esto para las pruebas
 		$address = $_POST['email']; //<- descomentar al poner en marcha la web
 		$nombre = ucfirst($nombre);
-		$this->email->Subject = "Confirmación registro en CobShop";
+		$this->email->Subject = "ConfirmaciÃ³n registro en CobShop";
 		$this->email->msgHTML("
 				<htlm>
 				<head>
@@ -76,7 +76,7 @@ class Correo{
 					<ul>
 						<li>Compra desde casa</li>
 						<li>Al mejor precio</li>
-						<li>Envíos a todo Schamann y Escaleritas</li>
+						<li>EnvÃ­os a todo Schamann y Escaleritas</li>
 					</ul>
 				
 					<img src='{$imagen}'>
@@ -167,12 +167,12 @@ class Correo{
 				<img src= 'http://cobshop.sytes.net/images/productos/".$imagenProducto."'>
 				<hr/>
 				<table style='font-weight:bold; font-size:16px; width:450px; text-align:center' id='pr_pago'>
-				<tr><td style='background-color:orange'>$unidades</td><td style='background-color:orange'>x</td><td style='background-color:orange'>$nombreProducto</td><td style='background-color:orange'>$precioProducto €</td><td style='background-color:orange'>$descuentoProducto %</td><td style='background-color:orange'>$coste_total €</td></tr>
-				<tr><td></td><td></td><td></td><td></td><td style='background-color:orange'>Total:</td><td style='background-color:orange'>$coste_total €</td></tr>
+				<tr><td style='background-color:orange'>$unidades</td><td style='background-color:orange'>x</td><td style='background-color:orange'>$nombreProducto</td><td style='background-color:orange'>$precioProducto â‚¬</td><td style='background-color:orange'>$descuentoProducto %</td><td style='background-color:orange'>$coste_total â‚¬</td></tr>
+				<tr><td></td><td></td><td></td><td></td><td style='background-color:orange'>Total:</td><td style='background-color:orange'>$coste_total â‚¬</td></tr>
 				<tr></tr>
 				</table>
 				
-				<h2>Dirección de entrega: <br/>
+				<h2>DirecciÃ³n de entrega: <br/>
 				$direccion<br/>
 				$ciudad<br/>
 				$cp <br/>
@@ -217,7 +217,7 @@ class Correo{
 				</head>
 				<body style'font-size:12px; '>
 					
-				<h2>Saludos. A petición tuya hemos reseteado tu password</h2>
+				<h2>Saludos. A peticiÃ³n tuya hemos reseteado tu password</h2>
 				<h2>Tu nuevo password es: <br/>
 				$nuevoPassword
 				</h2>
