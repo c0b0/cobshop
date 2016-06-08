@@ -1,6 +1,6 @@
 <?php 
 /**
- * mant_usuarios.php
+ * proceso_pago.php
  *
  * página en la que se muestra el producto que se va a comprar
  * con un botón para comprar
@@ -18,7 +18,6 @@
 $comprador = Usuario::getUsuarioPorId($_SESSION['id_usuario']);
 $producto = Producto::getProductoPorId($_POST['id_producto']);
 $unidades = $_POST['unidades'];
-
 ?>
 
 <ul id="user-tools">
@@ -53,23 +52,3 @@ if ($producto->getDescuento()){
 			<input type="hidden" name="cpago" value="ok"/>
 		</form></td>
 </table>
-
-
-	
-
-
-
-<?php 
-/**
- * lo que creo que voy a hacer es:
- * poner un botón o un link a una página que se llame confirmar pago
- * En ese momento borraré el producto del carrito, y lo pasaré a compras
- * 
- * Los datos que necesito para pasar un producto del carrito a la compra son:
- * id_usuario -> lo tengo en session
- * las unidades
- * y el coste total
- * 
- */
-
-?>

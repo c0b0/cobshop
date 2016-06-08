@@ -17,8 +17,6 @@ $id = $_GET ['id_articulo'];
 $articulo = Producto::getProductoPorIdParaCarrito ( $id );
 $comentarios = Comentario::getComentariosPorId ( $id );
 
-$url = pillaURL (); //guardo esta variable para usarla en la creación del link
-// echo $url . '<br />';
 ?>
 
 <div id="articulo-lista">
@@ -80,15 +78,6 @@ $url = pillaURL (); //guardo esta variable para usarla en la creación del link
 	</form>
 </div>
 <!--  Fin del div para introducir un nuevo comentario -->
-
-
-
-
-<div id="pag">
-	<!-- Paginacion-->
-	<p>[Primera][2][3][4][Última]</p>
-</div>
-<!-- Fin de Paginacion-->
 
 <?php endif; ?>
 

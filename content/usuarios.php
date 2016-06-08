@@ -1,6 +1,6 @@
 <?php
 /**
- * productos.php
+ * usuarios.php
  *
  * pagina para mostrar los usuarios en la parte de administracion
  *
@@ -61,7 +61,12 @@ if (isset ( $_GET ['pag'] )) {
 ?>
 
 <?php 
-/*-------------------------------------------------------------------------------*/
+/*
+ * en esta parte intento ver si antes o después
+ * de la página en la que está el usuario, hay más páginas
+ * para que, por ejemplo, no aparezcan flechas de navegación hacia la
+ * izquierda, cuando se esté en la primera página
+ */
 if ($pag + 1 > $numeroPaginas){
 	$siguiente = 0;
 }else{

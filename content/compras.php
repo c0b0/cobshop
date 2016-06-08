@@ -49,11 +49,3 @@ $items = Compra::getCompras();
 		<?php endforeach;?>
 	
 </table>
-
-
-
-<div id="pag">
-	<!-- Paginacion-->
-	<p>[Primera][2][3][4][Última]</p>
-</div>
-<!-- Fin de Paginacion-->

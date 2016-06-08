@@ -5,6 +5,7 @@
  *	al loguear, guardo diferentes variables en
  *	el array de $_SESSIÓN
  * 	aquí simplemente libero esas variables
+ * 	para desloguear
  *
  * @author	cobo morera
  * @version 1.0 2016-05-02

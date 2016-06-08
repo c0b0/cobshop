@@ -14,13 +14,13 @@
 
 <?php
 /*
- * aquí declaro una serie de variablas que me van a servir en el proceso de paginación
+ * aquí declaro una serie de variables que me van a servir en el proceso de paginación
  * 
- * $registros por páginas indica el número de registros que quiero que se vean de una vez
+ * $registrosPorPagina indica el número de registros que quiero que se vean de una vez
  * intento que sea una cantidad razonable para que el usuario no deba hacer scroll en la página
  * de forma interminable
  * 
- * $numero de registros indica la cantidad de filas que tengo en esa tabla, de modo que 
+ * $numeroRegistros indica la cantidad de filas que tengo en esa tabla, de modo que 
  * dividiendo  por el número de registros que quiero por páginas (redondeando hacia arriba)
  * tendré el número de páginas en total
  */
@@ -36,6 +36,10 @@ $offset = 6; //este es el numero de registro desde el que empezará // si es 14, 
 
 
 <?php
+/*
+ * Compruebo si estamos en alguna páginaen concreto. De no ser así, 
+ * será la página 1
+ */
 if (isset ( $_GET ['pag'] )) {
 	$pag = $_GET ['pag'];
 	// consulta con el offset correspondiente
@@ -47,7 +51,13 @@ if (isset ( $_GET ['pag'] )) {
 ?>
 <?php if ($productos): ?>
 <?php 
-/*-------------------------------------------------------------------------------*/
+
+/*
+ * en esta parte intento ver si antes o después
+ * de la página en la que está el usuario, hay más páginas
+ * para que, por ejemplo, no aparezcan flechas de navegación hacia la
+ * izquierda, cuando se esté en la primera página
+ */
 if ($pag + 1 > $numeroPaginas){
 	$siguiente = 0;
 }else{

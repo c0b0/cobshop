@@ -64,8 +64,6 @@ $tipo = $usuario->getId_tipo() == 1 ? $tipo = 'Admin' : $tipo = 'Normal';
 		
 	</table>
 
-
-	<!-- <a class="btn" href="usuariomant">Editar</a> -->
 </div>
 
 

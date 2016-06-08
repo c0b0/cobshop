@@ -16,7 +16,6 @@
 
 <?php
 $items = Carrito::getCarritoDelUsuario( $_SESSION ['id_usuario'] );
-
 ?>
 
 <?php if ($items): ?>
@@ -42,7 +41,6 @@ $items = Carrito::getCarritoDelUsuario( $_SESSION ['id_usuario'] );
 				
 			</tr>
 		</thead>
-		<!-- <tfoot><tr><td colspan="3">XXX€</td></tr></tfoot> -->
 		<tbody>
 			
 		
@@ -65,7 +63,6 @@ $items = Carrito::getCarritoDelUsuario( $_SESSION ['id_usuario'] );
 				<td><?php echo $item['precio']?></td>
 				<td><?php echo $item['descuento'].'%'; ?></td>
 				<td><?php echo $item['descuento'] ? CalculaDescuento($item['precio'], $item['descuento']): $item['precio'] .'€'; ?></td>
-				<!-- <td><a class="btn" href="comprar.html">Comprar</a></td> -->
 				<td><a href="index.php?content=borrar&tabla=carritos&id=<?php echo $item['id_producto']; ?>"><img style="width:30px;height:30px;"class="noShadow" alt="" src="images/iconos/borrar-small.png"></a></td>
 				<td><input type="submit" value="Comprar"></td>
 				

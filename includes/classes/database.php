@@ -17,8 +17,8 @@ class Database{
 	//propiedades
 	private static $_connection = NULL;
 	private static $_hostname = "localhost";
-	private static $_mysqlUser = 'cobshop';
-	private static $_mysqlPass = 'winter';
+	private static $_mysqlUser = ''
+	private static $_mysqlPass = '';
 	private static $_mysqlDatabase = "cobshop";
 	
 	

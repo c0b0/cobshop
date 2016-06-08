@@ -193,6 +193,11 @@ function maintCategoria(){
 }
 
 
+/**
+ * prepComentario()
+ * crear un array con las propiedades de un comentario, para luego crear
+ * un objeto de esta clase
+ */
 function prepComentario(){
 	$results = '';
 	$items = array(
@@ -207,7 +212,11 @@ function prepComentario(){
 }
 
 
-
+/**
+ * loginUsuario()
+ * hace unas comprobaciones de seguridad para finalmente
+ * llamar al método estático login del objeto usuario
+ */
 function loginUsuario(){
 	$results = '';
 	if (isset($_POST['login']) and $_POST['login'] == 'Log In'){
@@ -294,6 +303,9 @@ function cortarNombre($nombre){
 
 /**
  * addToCart()
+ * crear un array con los datos tomados del formulario y la sesión
+ * para posteriormente mandarlo al método de la clase carrito
+ * que crear un objeto de esta clase
  */
 
 function addToCart(){
@@ -347,8 +359,8 @@ function hallarNumeroRegistros($tabla){
 /**
  * toma el precio del producto y devuelve su precio 
  * actual con el correspondiente descuento
- * @param unknown $precio
- * @param unknown $descuento
+ * @param int $precio
+ * @param int $descuento
  */
 function CalculaDescuento($precio, $descuento){
 	$precioFinal = $precio - (($precio * $descuento) / 100);
@@ -356,6 +368,30 @@ function CalculaDescuento($precio, $descuento){
 }
 
 
+/**
+ * realizaCompra()
+ * toma una serie de datos de $_POST
+ * y simula la compra
+ * 
+ * Con simular la compra quiero decir que
+ * 1.- añade el producto comprado a la tabla compras
+ * 2.- borra el producto de la tabla carritos
+ * 
+ * Esta no es la forma en la que debería haberlo hecho,
+ * pero las prisas, y el hecho de querer redireccionar a PayPal
+ * han mandado y para el proyecto queda perfecto
+ * (el botón de paypal redirecciona directamente a su página, y no puedo, 
+ * procesar nada en ese momento, así que la solución fue dejar un paso
+ * intermedio, en el que añado a compras/borro en carrito y luego paso 
+ * a la web de paypal.
+ * Pero por seguridad, no es bueno que haya pasado datos por $_POST mediante
+ * atributos "hidden"
+ * 
+ * Mejor opción -> pasar datos a tabla temporal
+ * ) 
+ *  
+ * 
+ */
 function realizaCompra(){
 	$id_producto = $_POST['id_producto'];
 	$unidades = $_POST['unidades'];
@@ -368,6 +404,17 @@ function realizaCompra(){
 	
 }
 
+
+/**
+ * resetPassword()
+ * 
+ * Comprueba si el mail proporcionado existe
+ * y de ser así, llama al método de la clase Usuario
+ * para que genere un password aleatorio nuevo
+ * y lo envía por correo electrónico
+ * 
+ * @return string[]
+ */
 function resetPassword(){
 	$email = $_POST['email'];
 	//echo $email;
@@ -387,6 +434,18 @@ function resetPassword(){
 }
 
 
+/**
+ * formateaString()
+ * 
+ * En algunos casos los nombres de los productos son algo largos 
+ * para el ancho que he puesto en el grid de navegación
+ * Con esta función en caso de que pase de un tamaño determinado
+ * Lo corto y pongo unos puntos suspensivos para que se sepa
+ * que continúa
+ * 
+ * Solo lo uso en la parte de administración de productos
+ * @param string $string
+ */
 
 function formateaString($string){
 	if (strlen($string) > 29){
@@ -398,7 +457,13 @@ function formateaString($string){
 }
 
 
-
+/**
+ * tieneSoloLetras()
+ * Para validar campos en los que solo quiera
+ * que hayan letras
+ * 
+ * @param string $nombre
+ */
 function tieneSoloLetras($nombre){
 	$soloLetras = true;
 	for ($i = 0; $i < strlen($nombre) ; $i ++){
@@ -410,6 +475,16 @@ function tieneSoloLetras($nombre){
 }
 
 
+/**
+ * esValidoElPass
+ * 
+ * Valida el pass
+ * En este caso, solo he puesto como condición
+ * que tenga 8 o más caracteres
+ * 
+ * @param string $password
+ * @return boolean
+ */
 function esValidoElPass($password){
 	if (strlen($password) >= 8 ){
 		$valido = true;
@@ -430,12 +505,12 @@ function esValidoElPass($password){
  */
 function subirFoto(){
 	if (is_uploaded_file($_FILES['foto']['tmp_name'])){
-		//$host = "cobshop.sytes.net";
-		$host = "localhost";
+		//$host = ""; //ip o nombre del servidor p.e. -> miweb.midominio.com 
+		$host = "localhost"; 
 		//$port = 21;
-		$user = 'jacobo';
-		$password = 'jacmorram';
-		$ruta = '/var/www/cobshop.sytes.net/images/productos/';
+		$user = 'usuario';
+		$password = 'password';
+		$ruta = '/var/www/rutadelacarpetaalaquesequieresubirelarchivo';
 	
 		//conectamos con el servidor
 	

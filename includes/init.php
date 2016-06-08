@@ -10,14 +10,22 @@
 */
 session_start(); //inicia una nueva sesión, o resume la existente
 //inicializa el mensaje
-
 $message = '';
 if(isset($_SESSION['message'])){
 	$message = htmlentities($_SESSION['message']);
 	unset($_SESSION['message']); 
-	
 }
+
+/**
+ * MAGIC_QUOTES_ACTIVE era una opción que se usaba en php
+ * para tratar con las comillas de las strings.
+ * Defino esta constante para saber si está o no activo
+ * y en consecuencia usar o no el método de la clase
+ * mysqli para escapar comillas
+ * @var unknown
+ */
 define('MAGIC_QUOTES_ACTIVE',get_magic_quotes_gpc());
+
 require_once 'functions.php';
 
 /**
@@ -41,6 +49,28 @@ function __autoload($class_name){
 }
 
 //Proceso basado en la variable $_POST['task']
+/**
+ * En los formularios introduzco un atributo "hidden"
+ * de nombre $task
+ * que indica qué se está haciendo.
+ * 
+ * Cada vez que la página se recarga (siempre, aunque no se
+ * trate de un formulario) el recorrido que hace es
+ * 1.- ir al index
+ * 2.- en index hay un require que carga init (por eso siempre pasará por aquí)
+ * 3.- al llegar aquí comprueba si existe la variable $task
+ * 
+ * De existir, esta variable se pasa por este switch case.
+ * y dependiendo de su valor, procesará que se añada un usuario
+ * que se borre, etc, casi siempre llamando a una función
+ * que está en el archivo 'functions.php' que a su vez
+ * llamaría a un método de la clase correspondiente
+ * 
+ * En resumen:
+ * index->init->functions->metododelaclasecorrespondiente
+ * 
+ * @param string $_POST['task']
+ */
 $task = filter_input(INPUT_POST, 'task', FILTER_SANITIZE_STRING);
 switch ($task){
 	//USUARIOS
@@ -134,10 +164,10 @@ switch ($task){
  * al carrito a través de un formulario, lo cual daba el problema de no poder dar
  * atrás en la página, ya que aparecía el mensaje de que había que reenviar
  * datos (ya que el formulario se ejecutaba por post)
- * Por lo tanto, reasigno a la variable $task un valor que le doy por get
+ * Por lo tanto, reasigno a la variable $task un valor que le doy por $_GET
  * mediante un link, y a partir de ahí hago el proceso de inserción
  * del producto en el carrito
- * @var unknown
+ * @var string $_GET['task']
  */
 $task = filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING);
 switch ($task) {

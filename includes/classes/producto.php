@@ -501,6 +501,13 @@ class Producto {
 	}
 	
 	
+	/**
+	 * restaStock()
+	 * Resta las unidades compradas al stock existente
+	 * del producto 
+	 * @param int $id_producto
+	 * @param int $unidades
+	 */
 	static function restaStock($id_producto, $unidades){
 		$connection = Database::getConnection();
 		$query = "SELECT * FROM productos WHERE productos.id_producto = $id_producto";
@@ -521,6 +528,16 @@ class Producto {
 		
 	}
 	
+	
+	/**
+	 * Comprueba si hay o no stock del producto
+	 * para la entrega del proyecto decidí que si no había stock
+	 * el producto no se mostraría en la web
+	 * 
+	 * Otra opción sería hacer la comprobación al ir a hacer la compra, pero había 
+	 * prisas. No me juzgues!
+	 * @param int $id_producto
+	 */
 	static function hayStock($id_producto){
 		$hayStock = false;
 		$connection = Database::getConnection();

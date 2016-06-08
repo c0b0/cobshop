@@ -125,11 +125,9 @@ class Comentario{
 			('".Database::prep($this->comentario)."', ".Database::prep($this->id_usuario)." , ".Database::prep($this->id_producto).")";
 		
 		if ($connection->query($query)){
-			
 			$return = array('', 'Se ha añadido el comentario' , '');
 			return $return;
 		}else{
-			echo '<br /> estás jodido'; 
 			$return = array('' , 'No se ha podido añadir el comentario' , '');
 			return $return;
 		}
@@ -149,9 +147,9 @@ class Comentario{
 		
 	
 		if ($connection->query($query)){
-			echo 'borrado';
+			//echo 'borrado';
 		}else{
-			echo 'no se pudo borrar';
+			//echo 'no se pudo borrar';
 		}
 			
 	}

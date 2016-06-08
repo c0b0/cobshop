@@ -174,11 +174,20 @@ class Compra{
 			$mailCompra = new Correo();
 			$mailCompra->enviarMailCompraRealizada($id_producto, $unidades, $coste_total);
 		}else{
-			//echo 'algo falló por el camino';
+			//echo 'algo ha fallado';
 		}
 	}
 	
 	
+	/**
+	 * getVentasParaPaginacion()
+	 * 
+	 * Realiza una consulta y devuelve una serie de resultados
+	 * comprendidos en un rango concreto
+	 * @param unknown $pag
+	 * @param unknown $limit
+	 * @param unknown $offset
+	 */
 	static function getVentasParaPaginacion ( $pag, $limit, $offset){
 		if($pag == 1){
 			$offset = 0;
@@ -224,6 +233,7 @@ class Compra{
 	
 	
 	/**
+	 * getTotalCompras()
 	 * realiza una consulta a la tabla de compras
 	 * para sumar toda la columna de coste_total y hallar el
 	 * total de dinero ganado con las ventas

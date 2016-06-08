@@ -48,10 +48,7 @@ $items =Categoria::getCategorias();
 </table>
 
 
-<div id="pag">
-	<!-- Paginacion-->
-	
-</div>
+
 <!-- Fin de Paginacion-->
 <?php else: ?>
 <?php header("location: index.php?content=login"); ?>

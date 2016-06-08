@@ -1,38 +1,40 @@
 <?php 
 
-
+/*
+ * Pequeña trampa por aquí
+ * por seguridad no debería pillar estas variables que he 
+ * enviado a través de atributos "hidden". 
+ * Sería mejor opción enviarlos a una tabla temporal y recuperarlos de ahí
+ * En cualquier caso, de cara a la entrega del proyecto, así funciona bien 
+ */
 $comprador = Usuario::getUsuarioPorId($_SESSION['id_usuario']);
 $producto = Producto::getProductoPorId($_POST['id_producto']);
 $unidades = $_POST['unidades'];
-
-
-
 $precioFinal = $_POST['precioFinal'];
 ?>
 
 <html>
 
 <head>
+	<?php 
+	/*
+	 * Este script, envía el formulario automáticamente al cargar la página, como si 
+	 * al cargarse, se aprete el botón submit
+	 * Decidir hacerlo así, y poner un mensaje de "Redireccionando..."
+	 */
+	
+	?>
     <script>
-
-    window.onload=function(){
-
-                // Una vez cargada la página, el formulario se enviara automáticamente.
-
+	  window.onload=function(){
+		// Una vez cargada la página, el formulario se enviara automáticamente.
 		document.forms["botonPapypal"].submit();
-
-    }
-
+	   }
     </script>
 </head>
-
 <body>
-
 <ul id="user-tools">
 	<li><a class="btn-back" href="index.php?content=cart&id_usuario=<?php echo $_SESSION['id_usuario']; ?>"><img	src="images/iconos/back.png" title="Volver atrás"></a></li>
 </ul>
-
-<?php $_SESSION['misMensajes'] = 'Proceso de pago 1/2';?>
 
 <h2>Redireccionando, espera por favor...</h2>
 
@@ -42,7 +44,14 @@ $precioFinal = $_POST['precioFinal'];
 	<td id="pfinal"><?php echo $producto->getDescuento()? CalculaDescuento($producto->getPrecio(), $producto->getDescuento()) .'€' : $producto->getPrecio() . "€";  ?></td></tr>
 	<tr><td></td><td></td><td></td><td></td><td>Total:</td><td id="pfinal"><?php echo $precioFinal .'€'; ?></td></tr>
 	<tr><td></td><td></td><td></td><td></td><td colspan="2">
-	
+
+
+<?php 
+/*
+ * Este botón redirecciona a la página de pago de PayPal. La única info que aporto aquí
+ * es el dinero a pagar con $precioFinal
+ */
+?>	
 <form id="botonPapypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_xclick"> 
 			<input type="hidden" name="business" value="coblion-facilitator@gmail.com">

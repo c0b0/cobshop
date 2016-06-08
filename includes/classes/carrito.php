@@ -1,8 +1,8 @@
 <?php
 /**
- * categoria.php
+ * carrito.php
  *
- * Archivo para la clase categoria
+ * Archivo para la clase carrito
  *
  * @author	cobo morera
  * @version 1.0 2016-05-02

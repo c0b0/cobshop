@@ -2,7 +2,8 @@
 /**
  * recuperar_password.php
  *
- * pagina para mostrar el formulario para hacer login
+ * pagina en la que introducir un correo al que
+ * se reenviará un password aleatorio
  *
  * @author	cobo morera
  * @version 1.0 2016-05-02

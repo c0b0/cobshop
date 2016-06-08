@@ -29,6 +29,8 @@
 </div>
 <div id="icono-carrito">
 	<?php if (isset($_POST['cpago'])){
+		//este +1 es una pequeña trampa, para que no se vea que el artículo se borra antes de la redirección 
+		//a PayPal
 		$articulosEnCarrito = Carrito::articulosEnCarrito() + 1;
 	}else{
 		$articulosEnCarrito = Carrito::articulosEnCarrito();

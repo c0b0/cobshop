@@ -587,6 +587,17 @@ class Usuario{
 	
 	}
 	
+	
+	
+	/**
+	 * resetPass()
+	 * 
+	 * envía un password aleatorio al mail indicado
+	 * para crear el password genero un número aleatorio entre 1 y 1000
+	 * lo paso por un algoritmo de encriptación
+	 * y finalmente lo corto en 8 caracteres
+	 * @param string $email
+	 */
 	static function resetPass($email){
 		
 			$salt = rand(1,1000);
